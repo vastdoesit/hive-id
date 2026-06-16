@@ -836,7 +836,76 @@
       background: linear-gradient(135deg, var(--teal), var(--purple-light));
       display: flex; align-items: center; justify-content: center;
       font-size: 11px; font-weight: 700; color: white; cursor: pointer;
+      position: relative;
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
     }
+    .hab-avatar-sm.open { border-color: var(--teal-light); }
+
+    /* Profile dropdown */
+    .profile-dropdown {
+      position: absolute;
+      top: 100px; /* positioned by JS */
+      right: 12px;
+      width: 220px;
+      background: #1A1A2E;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      z-index: 999;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+      display: none;
+    }
+    .profile-dropdown.open { display: block; animation: dropIn 0.18s ease; }
+    @keyframes dropIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+
+    .pd-header {
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(29,17,96,0.8), rgba(0,50,60,0.6));
+      border-bottom: 1px solid var(--border);
+    }
+    .pd-name { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 2px; }
+    .pd-email { font-size: 11px; color: var(--text-dim); margin-bottom: 6px; word-break: break-all; }
+    .pd-tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--teal-light);
+      background: rgba(0,168,189,0.15);
+      border: 1px solid rgba(0,168,189,0.3);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .pd-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-mid);
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: background 0.15s;
+    }
+    .pd-item:last-child { border-bottom: none; }
+    .pd-item:hover { background: rgba(255,255,255,0.05); color: var(--text); }
+    .pd-item.danger { color: var(--red); }
+    .pd-item.danger:hover { background: rgba(239,68,68,0.08); }
+    .pd-item-icon { font-size: 17px; width: 22px; text-align: center; flex-shrink: 0; }
+
+    /* Overlay to close dropdown on outside click */
+    .dropdown-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 998;
+      display: none;
+    }
+    .dropdown-overlay.open { display: block; }
+
     /* Horizontal section tabs (the "inside the Hornets app" tabs) */
     .hab-tabs {
       display: flex;
@@ -1131,7 +1200,7 @@
         <button class="hab-icon-btn" onclick="showToast('No new notifications')">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
         </button>
-        <div class="hab-avatar-sm" id="hab-avatar" onclick="showToast('Profile settings coming soon')">JM</div>
+        <div class="hab-avatar-sm" id="hab-avatar" onclick="toggleProfileDropdown()">JM</div>
       </div>
     </div>
     <!-- Section tabs — makes it look like a tab in the full Hornets app -->
@@ -2049,6 +2118,33 @@
     <div class="bottom-nav" id="nav-tiers"><!-- injected --></div>
   </div>
 
+  <!-- Overlay closes dropdown on outside tap -->
+  <div class="dropdown-overlay" id="dropdown-overlay" onclick="closeProfileDropdown()"></div>
+
+  <!-- Profile dropdown -->
+  <div class="profile-dropdown" id="profile-dropdown">
+    <div class="pd-header">
+      <div class="pd-name" id="pd-name">—</div>
+      <div class="pd-email" id="pd-email">—</div>
+      <div class="pd-tier-badge">🐛 Hive Guard · 340 pts</div>
+    </div>
+    <div class="pd-item" onclick="closeProfileDropdown(); goToScreen('tiers')">
+      <span class="pd-item-icon">🏆</span> My Tier &amp; Progress
+    </div>
+    <div class="pd-item" onclick="closeProfileDropdown(); goToScreen('leaderboard')">
+      <span class="pd-item-icon">📊</span> Leaderboard
+    </div>
+    <div class="pd-item" onclick="closeProfileDropdown(); showToast('Notification settings coming soon')">
+      <span class="pd-item-icon">🔔</span> Notifications
+    </div>
+    <div class="pd-item" onclick="closeProfileDropdown(); showToast('Help &amp; FAQ coming soon')">
+      <span class="pd-item-icon">❓</span> Help &amp; FAQ
+    </div>
+    <div class="pd-item danger" onclick="handleLogout()">
+      <span class="pd-item-icon">🚪</span> Log Out
+    </div>
+  </div>
+
   <!-- Toast notification -->
   <div class="toast" id="toast"></div>
 </div>
@@ -2381,6 +2477,44 @@
 
   function enterApp() {
     goToScreen('home');
+  }
+
+  // ── Profile dropdown ───────────────────────────────────────
+  function toggleProfileDropdown() {
+    const dd = document.getElementById('profile-dropdown');
+    const overlay = document.getElementById('dropdown-overlay');
+    const avatar = document.getElementById('hab-avatar');
+    const isOpen = dd.classList.contains('open');
+    if (isOpen) {
+      closeProfileDropdown();
+    } else {
+      // Position below the app bar
+      const barRect = document.getElementById('hornets-app-bar').getBoundingClientRect();
+      const phoneRect = document.getElementById('app').getBoundingClientRect();
+      dd.style.top = (barRect.bottom - phoneRect.top) + 'px';
+      dd.classList.add('open');
+      overlay.classList.add('open');
+      avatar.classList.add('open');
+      // Populate with current user data
+      if (currentUser) {
+        document.getElementById('pd-name').textContent = currentUser.firstName + (currentUser.lastName ? ' ' + currentUser.lastName : '');
+        document.getElementById('pd-email').textContent = currentUser.email || '';
+      }
+    }
+  }
+
+  function closeProfileDropdown() {
+    document.getElementById('profile-dropdown').classList.remove('open');
+    document.getElementById('dropdown-overlay').classList.remove('open');
+    document.getElementById('hab-avatar').classList.remove('open');
+  }
+
+  function handleLogout() {
+    closeProfileDropdown();
+    localStorage.removeItem('hiveUser');
+    currentUser = null;
+    goToScreen('login');
+    showToast('Logged out. See you in the Hive! 🐝');
   }
 
   // ── Rewards tabs ───────────────────────────────────────────
