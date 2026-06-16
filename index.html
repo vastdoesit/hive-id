@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hive ID — Charlotte Hornets</title>
+  <title>The Swarm — Charlotte Hornets</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
@@ -1125,7 +1125,7 @@
     <div class="hab-top">
       <div class="hab-brand">
         <img src="https://upload.wikimedia.org/wikipedia/en/c/c4/Charlotte_Hornets_%282014%29.svg" alt="Hornets" onerror="this.style.display='none'" />
-        <span class="hab-brand-text">Charlotte Hornets</span>
+        <span class="hab-brand-text">Charlotte Hornets · The Swarm</span>
       </div>
       <div class="hab-actions">
         <button class="hab-icon-btn" onclick="showToast('No new notifications')">
@@ -1139,7 +1139,7 @@
       <div class="hab-tab" onclick="goToScreen('scores')">Scores</div>
       <div class="hab-tab" onclick="showToast('Switch to News in the full Hornets app')">News</div>
       <div class="hab-tab" onclick="showToast('Switch to Videos in the full Hornets app')">Videos</div>
-      <div class="hab-tab hive-tab active" onclick="goToScreen('home')">🐝 Hive ID</div>
+      <div class="hab-tab hive-tab active" onclick="goToScreen('home')">🐝 The Swarm</div>
       <div class="hab-tab" onclick="showToast('Buy tickets in the full Hornets app')">Tickets</div>
       <div class="hab-tab" onclick="showToast('More options in the full Hornets app')">More</div>
     </div>
@@ -1151,9 +1151,34 @@
   <div class="screen active" id="login">
     <div class="login-hero">
       <img class="login-logo" src="https://upload.wikimedia.org/wikipedia/en/c/c4/Charlotte_Hornets_%282014%29.svg" alt="Charlotte Hornets" onerror="this.src=''; this.style.fontSize='64px'; this.alt='🐝';" />
-      <div class="login-app-label">Charlotte Hornets</div>
-      <div class="login-title">JOIN <span>HIVE ID</span></div>
-      <div class="login-sub">Your exclusive rewards portal — built for high school students in the Carolinas.</div>
+      <div class="login-app-label">Charlotte Hornets Official Fan Extension</div>
+      <div class="login-title">THE <span>SWARM</span></div>
+      <div class="login-sub" style="font-size:14px; margin-top:6px; margin-bottom:10px;">The official fan rewards experience built for high school students.</div>
+      <!-- Mission statement -->
+      <div style="
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(0,168,189,0.25);
+        border-radius: 14px;
+        padding: 14px 16px;
+        text-align: left;
+        margin-bottom: 4px;
+      ">
+        <div style="font-size:11px; font-weight:800; color:var(--teal-light); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Why The Swarm?</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="display:flex; gap:10px; align-items:flex-start; font-size:12px; color:var(--text-mid); line-height:1.4;">
+            <span style="font-size:16px; flex-shrink:0;">⚡</span>
+            <span><strong style="color:var(--text);">Earn rewards</strong> for attending games, watching online, and engaging with the Hornets — every interaction counts.</span>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start; font-size:12px; color:var(--text-mid); line-height:1.4;">
+            <span style="font-size:16px; flex-shrink:0;">🏆</span>
+            <span><strong style="color:var(--text);">Level up your fandom</strong> through four tiers — unlock exclusive experiences like court access and player meet &amp; greets.</span>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start; font-size:12px; color:var(--text-mid); line-height:1.4;">
+            <span style="font-size:16px; flex-shrink:0;">🐝</span>
+            <span><strong style="color:var(--text);">Become a lifelong fan</strong> — The Swarm turns casual followers into the next generation of Charlotte Hornets diehards.</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="login-form-wrap">
@@ -2293,7 +2318,7 @@
     saveUser(user);
     updateUserDisplays(user);
     enterApp();
-    showToast('Welcome to the Hive, ' + finalFirst + '! 🐝 +5 pts for joining');
+    showToast('Welcome to The Swarm, ' + finalFirst + '! 🐝 +5 pts for joining');
   }
 
   function handleSignIn() {
@@ -2347,8 +2372,10 @@
 
     // Sync app bar tab highlight
     document.querySelectorAll('.hab-tab').forEach(t => {
-      t.classList.toggle('active', t.textContent.trim() === '🐝 Hive ID' ? !['scores'].includes(id) : false);
-      if (id === 'scores' && t.textContent.trim() === 'Scores') t.classList.add('active');
+      t.classList.remove('active');
+      const label = t.textContent.trim();
+      if (id === 'scores' && label === 'Scores') t.classList.add('active');
+      if (id !== 'scores' && label === '🐝 The Swarm') t.classList.add('active');
     });
   }
 
