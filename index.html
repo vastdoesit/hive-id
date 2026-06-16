@@ -1009,6 +1009,93 @@
       font-family: inherit;
     }
 
+    /* ── Scores Screen ── */
+    .scores-offseason {
+      margin: 16px 16px 0;
+      background: linear-gradient(135deg, rgba(29,17,96,0.6), rgba(0,50,70,0.6));
+      border: 1px solid rgba(0,168,189,0.3);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+    }
+    .sos-icon { font-size: 32px; margin-bottom: 8px; }
+    .sos-title { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+    .sos-sub { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+    .sos-next { margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--teal-light); }
+
+    .season-record-bar {
+      display: flex;
+      justify-content: space-around;
+      padding: 14px 16px;
+      margin: 14px 16px 0;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+    .rec-stat { text-align: center; }
+    .rec-num { font-size: 22px; font-weight: 900; color: var(--text); line-height: 1; }
+    .rec-num.green { color: var(--green); }
+    .rec-num.red { color: var(--red); }
+    .rec-label { font-size: 10px; color: var(--text-dim); margin-top: 3px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .rec-divider { width: 1px; background: var(--border); }
+
+    .game-log-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 16px 8px;
+    }
+    .game-log-title { font-size: 13px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+    .game-log-toggle { display: flex; gap: 0; }
+    .gl-toggle-btn {
+      padding: 5px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-dim);
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .gl-toggle-btn:first-child { border-radius: 8px 0 0 8px; }
+    .gl-toggle-btn:last-child { border-radius: 0 8px 8px 0; border-left: none; }
+    .gl-toggle-btn.active { background: var(--teal); border-color: var(--teal); color: white; }
+
+    .game-row {
+      display: flex;
+      align-items: center;
+      padding: 10px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      gap: 10px;
+      transition: background 0.15s;
+    }
+    .game-row:hover { background: rgba(255,255,255,0.02); }
+    .gr-date { font-size: 11px; color: var(--text-dim); width: 46px; flex-shrink: 0; font-weight: 600; }
+    .gr-ha { font-size: 10px; color: var(--text-dim); width: 14px; flex-shrink: 0; text-align: center; }
+    .gr-opp { display: flex; align-items: center; gap: 8px; flex: 1; }
+    .gr-opp img { width: 26px; height: 26px; object-fit: contain; }
+    .gr-opp-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .gr-score { font-size: 13px; font-weight: 800; color: var(--text); text-align: right; min-width: 70px; }
+    .gr-result {
+      width: 24px; height: 24px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800; flex-shrink: 0;
+    }
+    .gr-result.W { background: rgba(34,197,94,0.2); color: var(--green); }
+    .gr-result.L { background: rgba(239,68,68,0.15); color: var(--red); }
+    .playin-divider {
+      margin: 4px 16px;
+      padding: 8px 12px;
+      background: rgba(255,199,44,0.08);
+      border: 1px solid rgba(255,199,44,0.2);
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
     /* Responsive: on small screens, show without phone frame */
     @media (max-width: 450px) {
       body { padding: 0; background: var(--bg); }
@@ -1049,10 +1136,10 @@
     </div>
     <!-- Section tabs — makes it look like a tab in the full Hornets app -->
     <div class="hab-tabs">
-      <div class="hab-tab" onclick="showToast('Switch to Scores in the full Hornets app')">Scores</div>
+      <div class="hab-tab" onclick="goToScreen('scores')">Scores</div>
       <div class="hab-tab" onclick="showToast('Switch to News in the full Hornets app')">News</div>
       <div class="hab-tab" onclick="showToast('Switch to Videos in the full Hornets app')">Videos</div>
-      <div class="hab-tab hive-tab active">🐝 Hive ID</div>
+      <div class="hab-tab hive-tab active" onclick="goToScreen('home')">🐝 Hive ID</div>
       <div class="hab-tab" onclick="showToast('Buy tickets in the full Hornets app')">Tickets</div>
       <div class="hab-tab" onclick="showToast('More options in the full Hornets app')">More</div>
     </div>
@@ -1165,6 +1252,47 @@
   <!-- ══════════════════════════════════════
        HOME SCREEN
   ══════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════
+       SCORES SCREEN
+  ══════════════════════════════════════ -->
+  <div class="screen" id="scores">
+    <div class="page-header" style="border-bottom:1px solid var(--border);">
+      <div class="page-title">Scores &amp; Schedule</div>
+      <div class="page-sub">2025–26 Charlotte Hornets · Regular Season</div>
+    </div>
+    <div class="scroll-area">
+      <!-- Off-season banner -->
+      <div class="scores-offseason">
+        <div class="sos-icon">🏁</div>
+        <div class="sos-title">2025–26 Season Complete</div>
+        <div class="sos-sub">The Hornets finished the regular season and competed in the Play-In Tournament. No current games are scheduled.</div>
+        <div class="sos-next">🗓 Next season tips off October 2026</div>
+      </div>
+
+      <!-- Season record -->
+      <div class="season-record-bar">
+        <div class="rec-stat"><div class="rec-num">44</div><div class="rec-label">Wins</div></div>
+        <div class="rec-divider"></div>
+        <div class="rec-stat"><div class="rec-num">38</div><div class="rec-label">Losses</div></div>
+        <div class="rec-divider"></div>
+        <div class="rec-stat"><div class="rec-num" style="color:var(--teal-light);">7th</div><div class="rec-label">East Seed</div></div>
+        <div class="rec-divider"></div>
+        <div class="rec-stat"><div class="rec-num" style="font-size:14px;">Play-In</div><div class="rec-label">Eliminated</div></div>
+      </div>
+
+      <!-- Toggle & game log -->
+      <div class="game-log-header">
+        <div class="game-log-title">Game Log</div>
+        <div class="game-log-toggle">
+          <button class="gl-toggle-btn active" onclick="filterGames('all',this)">All</button>
+          <button class="gl-toggle-btn" onclick="filterGames('W',this)">W</button>
+          <button class="gl-toggle-btn" onclick="filterGames('L',this)">L</button>
+        </div>
+      </div>
+      <div id="game-log-container"></div>
+    </div>
+  </div>
+
   <div class="screen" id="home">
     <div class="scroll-area">
       <div class="home-header">
@@ -1901,6 +2029,144 @@
 </div>
 
 <script>
+  // ── 2025-26 Hornets Game Data ─────────────────────────────
+  // [date, H/A, opponent, CHA score, OPP score, W/L, ESPN abbr]
+  const GAMES = [
+    ['Apr 12','A','New York Knicks',110,96,'W','ny'],
+    ['Apr 10','H','Detroit Pistons',100,118,'L','det'],
+    ['Apr 7','A','Boston Celtics',102,113,'L','bos'],
+    ['Apr 5','A','Minnesota T-Wolves',122,108,'W','min'],
+    ['Apr 3','H','Indiana Pacers',129,108,'W','ind'],
+    ['Apr 2','H','Phoenix Suns',127,107,'W','phx'],
+    ['Mar 31','A','Brooklyn Nets',117,86,'W','bkn'],
+    ['Mar 29','H','Boston Celtics',99,114,'L','bos'],
+    ['Mar 28','H','Philadelphia 76ers',114,118,'L','phi'],
+    ['Mar 26','H','New York Knicks',114,103,'W','ny'],
+    ['Mar 24','H','Sacramento Kings',134,90,'W','sac'],
+    ['Mar 21','H','Memphis Grizzlies',124,101,'W','mem'],
+    ['Mar 19','H','Orlando Magic',130,111,'W','orl'],
+    ['Mar 17','H','Miami Heat',136,106,'W','mia'],
+    ['Mar 14','A','San Antonio Spurs',102,115,'L','sa'],
+    ['Mar 11','A','Sacramento Kings',117,109,'W','sac'],
+    ['Mar 10','A','Portland Blazers',103,101,'W','por'],
+    ['Mar 8','A','Phoenix Suns',99,111,'L','phx'],
+    ['Mar 6','H','Miami Heat',120,128,'L','mia'],
+    ['Mar 4','A','Boston Celtics',118,89,'W','bos'],
+    ['Mar 3','H','Dallas Mavericks',117,90,'W','dal'],
+    ['Feb 28','H','Portland Blazers',109,93,'W','por'],
+    ['Feb 26','A','Indiana Pacers',133,109,'W','ind'],
+    ['Feb 24','A','Chicago Bulls',131,99,'W','chi'],
+    ['Feb 22','A','Washington Wizards',129,112,'W','wsh'],
+    ['Feb 20','H','Cleveland Cavaliers',113,118,'L','cle'],
+    ['Feb 19','H','Houston Rockets',101,105,'L','hou'],
+    ['Feb 11','H','Atlanta Hawks',110,107,'W','atl'],
+    ['Feb 9','H','Detroit Pistons',104,110,'L','det'],
+    ['Feb 7','A','Atlanta Hawks',126,119,'W','atl'],
+    ['Feb 5','A','Houston Rockets',109,99,'W','hou'],
+    ['Feb 2','H','New Orleans Pelicans',102,95,'W','no'],
+    ['Jan 31','H','San Antonio Spurs',111,106,'W','sa'],
+    ['Jan 29','A','Dallas Mavericks',123,121,'W','dal'],
+    ['Jan 28','A','Memphis Grizzlies',112,97,'W','mem'],
+    ['Jan 26','H','Philadelphia 76ers',130,93,'W','phi'],
+    ['Jan 24','H','Washington Wizards',119,115,'W','wsh'],
+    ['Jan 22','A','Orlando Magic',124,97,'W','orl'],
+    ['Jan 21','H','Cleveland Cavaliers',87,94,'L','cle'],
+    ['Jan 18','A','Denver Nuggets',110,87,'W','den'],
+    ['Jan 17','A','Golden State Warriors',116,136,'L','gs'],
+    ['Jan 15','A','Los Angeles Lakers',135,117,'W','lal'],
+    ['Jan 12','A','Los Angeles Clippers',109,117,'L','lac'],
+    ['Jan 10','A','Utah Jazz',150,95,'W','utah'],
+    ['Jan 8','H','Indiana Pacers',112,114,'L','ind'],
+    ['Jan 7','H','Toronto Raptors',96,97,'L','tor'],
+    ['Jan 5','A','Oklahoma City Thunder',124,97,'W','okc'],
+    ['Jan 3','A','Chicago Bulls',112,99,'W','chi'],
+    ['Jan 2','A','Milwaukee Bucks',121,122,'L','mil'],
+    ['Dec 31','H','Golden State Warriors',125,132,'L','gs'],
+    ['Dec 29','H','Milwaukee Bucks',113,123,'L','mil'],
+    ['Dec 26','A','Orlando Magic',120,105,'W','orl'],
+    ['Dec 23','H','Washington Wizards',126,109,'W','wsh'],
+    ['Dec 22','A','Cleveland Cavaliers',132,139,'L','cle'],
+    ['Dec 20','A','Detroit Pistons',86,112,'L','det'],
+    ['Dec 18','H','Atlanta Hawks',133,126,'W','atl'],
+    ['Dec 14','A','Cleveland Cavaliers',119,111,'W','cle'],
+    ['Dec 12','H','Chicago Bulls',126,129,'L','chi'],
+    ['Dec 7','H','Denver Nuggets',106,115,'L','den'],
+    ['Dec 5','A','Toronto Raptors',111,86,'W','tor'],
+    ['Dec 3','A','New York Knicks',104,119,'L','ny'],
+    ['Dec 1','A','Brooklyn Nets',103,116,'L','bkn'],
+    ['Nov 29','H','Toronto Raptors',118,111,'W','tor'],
+    ['Nov 28','H','Chicago Bulls',123,116,'W','chi'],
+    ['Nov 26','H','New York Knicks',101,129,'L','ny'],
+    ['Nov 23','A','Atlanta Hawks',110,113,'L','atl'],
+    ['Nov 22','H','Los Angeles Clippers',116,131,'L','lac'],
+    ['Nov 19','A','Indiana Pacers',118,127,'L','ind'],
+    ['Nov 17','A','Toronto Raptors',108,110,'L','tor'],
+    ['Nov 15','H','Oklahoma City Thunder',96,109,'L','okc'],
+    ['Nov 14','A','Milwaukee Bucks',134,147,'L','mil'],
+    ['Nov 12','H','Milwaukee Bucks',111,100,'W','mil'],
+    ['Nov 10','H','Los Angeles Lakers',111,121,'L','lal'],
+    ['Nov 7','A','Miami Heat',108,126,'L','mia'],
+    ['Nov 4','A','New Orleans Pelicans',112,116,'L','no'],
+    ['Nov 2','H','Utah Jazz',126,103,'W','utah'],
+    ['Nov 1','H','Minnesota T-Wolves',105,122,'L','min'],
+    ['Oct 30','H','Orlando Magic',107,123,'L','orl'],
+    ['Oct 28','A','Miami Heat',117,144,'L','mia'],
+    ['Oct 26','A','Washington Wizards',139,113,'W','wsh'],
+    ['Oct 25','A','Philadelphia 76ers',121,125,'L','phi'],
+    ['Oct 22','H','Brooklyn Nets',136,117,'W','bkn'],
+  ];
+
+  const PLAYIN = [
+    ['Apr 14','H','Miami Heat',127,126,'W','mia'],
+    ['Apr 17','A','Orlando Magic',90,121,'L','orl'],
+  ];
+
+  let gameFilter = 'all';
+
+  function renderGames(filter) {
+    const container = document.getElementById('game-log-container');
+    if (!container) return;
+    let html = '';
+    let list = [...GAMES];
+    if (filter === 'W') list = list.filter(g => g[5] === 'W');
+    if (filter === 'L') list = list.filter(g => g[5] === 'L');
+
+    // Play-in at top if showing all
+    if (filter === 'all') {
+      html += '<div class="playin-divider">🏆 Play-In Tournament</div>';
+      PLAYIN.forEach(g => { html += gameRowHTML(g); });
+      html += '<div class="playin-divider" style="margin-top:8px;">📅 Regular Season</div>';
+    }
+
+    list.forEach(g => { html += gameRowHTML(g); });
+    container.innerHTML = html;
+  }
+
+  function gameRowHTML(g) {
+    const [date, ha, opp, cha, opp_s, result, abbr] = g;
+    const haLabel = ha === 'H' ? 'vs' : '@';
+    const logoUrl = `https://a.espncdn.com/i/teamlogos/nba/500/${abbr}.png`;
+    const scoreColor = result === 'W' ? 'color:var(--green)' : 'color:var(--red)';
+    return `
+      <div class="game-row">
+        <div class="gr-date">${date}</div>
+        <div class="gr-ha">${haLabel}</div>
+        <div class="gr-opp">
+          <img src="${logoUrl}" alt="${opp}" onerror="this.style.display='none'" />
+          <span class="gr-opp-name">${opp}</span>
+        </div>
+        <div class="gr-score" style="${scoreColor}">${cha}–${opp_s}</div>
+        <div class="gr-result ${result}">${result}</div>
+      </div>`;
+  }
+
+  function filterGames(filter, btn) {
+    gameFilter = filter;
+    document.querySelectorAll('.gl-toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderGames(filter);
+  }
+
   // ── Navigation ─────────────────────────────────────────────
   const navItems = [
     { id: 'home',        icon: '🏠', label: 'Home' },
@@ -2075,6 +2341,15 @@
     const isLoggedIn = !LOGIN_SCREENS.has(id);
     document.getElementById('status-bar').style.display = isLoggedIn ? 'flex' : 'none';
     document.getElementById('hornets-app-bar').style.display = isLoggedIn ? 'block' : 'none';
+
+    // Render scores when navigating to that screen
+    if (id === 'scores') renderGames(gameFilter);
+
+    // Sync app bar tab highlight
+    document.querySelectorAll('.hab-tab').forEach(t => {
+      t.classList.toggle('active', t.textContent.trim() === '🐝 Hive ID' ? !['scores'].includes(id) : false);
+      if (id === 'scores' && t.textContent.trim() === 'Scores') t.classList.add('active');
+    });
   }
 
   function enterApp() {
