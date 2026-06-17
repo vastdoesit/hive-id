@@ -1506,6 +1506,278 @@
     .badge-desc { font-size: 10px; color: var(--text-dim); margin-top: 3px; line-height: 1.3; }
     .badge-pts  { font-size: 10px; font-weight: 800; color: var(--gold); margin-top: 5px; }
 
+    /* ═══════════════════════════════════════
+       COMPETITION SCREEN
+    ═══════════════════════════════════════ */
+    #competition {
+      background: var(--bg);
+    }
+    .comp-hero {
+      background: linear-gradient(160deg, #1a0050 0%, #001428 70%, var(--bg) 100%);
+      padding: 20px 18px 24px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .comp-hero::before {
+      content: '🏆';
+      position: absolute;
+      right: -20px; top: -20px;
+      font-size: 130px;
+      opacity: 0.06;
+      animation: float 4s ease-in-out infinite;
+    }
+    .comp-live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,230,118,0.15);
+      border: 1px solid rgba(0,230,118,0.4);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .comp-live-dot {
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.4; transform: scale(0.7); }
+    }
+    .comp-hero-title {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .comp-hero-title span { color: var(--gold); }
+    .comp-hero-sub {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .comp-deadline-row {
+      display: flex;
+      gap: 10px;
+    }
+    .comp-deadline-box {
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-bright);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+    }
+    .cdl-num {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--teal-light);
+      line-height: 1;
+    }
+    .cdl-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 3px;
+    }
+
+    /* Prize podium */
+    .comp-section { padding: 16px 18px 0; }
+    .comp-section-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .comp-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    .prize-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .prize-card {
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border: 1px solid transparent;
+    }
+    .prize-card.p1 {
+      background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,165,0,0.08));
+      border-color: rgba(255,215,0,0.45);
+    }
+    .prize-card.p2 {
+      background: linear-gradient(135deg, rgba(192,192,210,0.12), rgba(150,150,180,0.06));
+      border-color: rgba(192,192,210,0.35);
+    }
+    .prize-card.p3 {
+      background: linear-gradient(135deg, rgba(205,127,50,0.15), rgba(180,100,30,0.06));
+      border-color: rgba(205,127,50,0.35);
+    }
+    .prize-medal { font-size: 34px; flex-shrink: 0; }
+    .prize-info { flex: 1; }
+    .prize-place { font-size: 11px; font-weight: 800; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+    .prize-name  { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 2px; }
+    .prize-desc  { font-size: 12px; color: var(--text-dim); line-height: 1.4; }
+    .prize-pts   { font-size: 18px; font-weight: 900; color: var(--gold); text-align: right; flex-shrink: 0; }
+
+    /* How it works steps */
+    .steps-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 20px; }
+    .step-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      position: relative;
+      padding-bottom: 20px;
+    }
+    .step-item:last-child { padding-bottom: 0; }
+    .step-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 17px; top: 38px;
+      width: 2px;
+      bottom: 4px;
+      background: linear-gradient(180deg, var(--teal), transparent);
+    }
+    .step-num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--purple-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 900; color: white;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px rgba(0,163,189,0.4);
+    }
+    .step-text { padding-top: 6px; }
+    .step-title { font-size: 14px; font-weight: 800; color: var(--text); margin-bottom: 2px; }
+    .step-desc  { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+    /* Submission form */
+    .submit-card {
+      margin: 0 18px 20px;
+      background: var(--card-bright);
+      border: 1px solid var(--border-bright);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .submit-card-header {
+      padding: 16px 18px 12px;
+      background: linear-gradient(135deg, rgba(0,163,189,0.15), rgba(107,92,231,0.1));
+      border-bottom: 1px solid var(--border);
+    }
+    .submit-card-title { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 2px; }
+    .submit-card-sub   { font-size: 12px; color: var(--text-dim); }
+    .submit-form { padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; }
+    .sf-label { font-size: 11px; font-weight: 800; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+    .sf-input {
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid var(--border-bright);
+      border-radius: 12px;
+      padding: 12px 14px;
+      color: var(--text);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+    .sf-input:focus { border-color: var(--teal); }
+    .sf-input::placeholder { color: var(--text-dim); }
+    textarea.sf-input { resize: none; height: 90px; }
+    .comp-category-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .comp-cat-btn {
+      padding: 10px 8px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-bright);
+      background: transparent;
+      color: var(--text-dim);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .comp-cat-btn.selected {
+      border-color: var(--teal);
+      background: rgba(0,163,189,0.15);
+      color: var(--teal-light);
+    }
+    .btn-submit-comp {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--teal), var(--purple-light));
+      border: none;
+      border-radius: 14px;
+      color: white;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: inherit;
+      box-shadow: 0 8px 24px rgba(0,163,189,0.35);
+      transition: all 0.2s;
+      margin-top: 4px;
+    }
+    .btn-submit-comp:active { transform: scale(0.97); }
+    .comp-pts-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--gold);
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    /* Entries feed */
+    .entry-card {
+      background: var(--card-bright);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .entry-card:hover { border-color: var(--teal); }
+    .entry-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+    .entry-idea-name { font-size: 14px; font-weight: 800; color: var(--text); }
+    .entry-cat {
+      font-size: 10px; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px;
+      background: rgba(0,163,189,0.15);
+      color: var(--teal-light);
+      border: 1px solid rgba(0,163,189,0.25);
+    }
+    .entry-desc { font-size: 12px; color: var(--text-dim); line-height: 1.4; margin-bottom: 8px; }
+    .entry-footer { display: flex; justify-content: space-between; align-items: center; }
+    .entry-author { font-size: 11px; color: var(--text-dim); }
+    .entry-votes {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 13px; font-weight: 800; color: var(--pink);
+    }
+
     /* Responsive: on small screens, show without phone frame */
     @media (max-width: 450px) {
       body { padding: 0; background: var(--bg); }
@@ -2678,6 +2950,166 @@
     <div class="bottom-nav" id="nav-badges"><!-- injected --></div>
   </div>
 
+  <!-- ══════════════════════════════════════
+       COMPETITION SCREEN
+  ══════════════════════════════════════ -->
+  <div class="screen" id="competition">
+    <div class="comp-hero">
+      <div class="comp-live-badge"><div class="comp-live-dot"></div>Now Open</div>
+      <div class="comp-hero-title">🐝 The Swarm<br/><span>Design Challenge</span></div>
+      <div class="comp-hero-sub">Got an idea to make The Swarm even better? Submit your idea, earn points, and the best design wins an exclusive Hornets experience.</div>
+      <div class="comp-deadline-row">
+        <div class="comp-deadline-box"><div class="cdl-num" id="cdl-days">14</div><div class="cdl-label">Days Left</div></div>
+        <div class="comp-deadline-box"><div class="cdl-num" id="cdl-hours">06</div><div class="cdl-label">Hours</div></div>
+        <div class="comp-deadline-box"><div class="cdl-num" id="cdl-mins">22</div><div class="cdl-label">Minutes</div></div>
+        <div class="comp-deadline-box"><div class="cdl-num" id="cdl-entries">47</div><div class="cdl-label">Entries</div></div>
+      </div>
+    </div>
+
+    <div class="scroll-area">
+
+      <!-- Prizes -->
+      <div class="comp-section">
+        <div class="comp-section-title">🏆 Prizes</div>
+        <div class="prize-cards">
+          <div class="prize-card p1">
+            <div class="prize-medal">🥇</div>
+            <div class="prize-info">
+              <div class="prize-place">1st Place</div>
+              <div class="prize-name">Hornets Court Experience</div>
+              <div class="prize-desc">Pregame court access, meet a player, signed jersey + 1,000 pts</div>
+            </div>
+            <div class="prize-pts">+1000</div>
+          </div>
+          <div class="prize-card p2">
+            <div class="prize-medal">🥈</div>
+            <div class="prize-info">
+              <div class="prize-place">2nd Place</div>
+              <div class="prize-name">Hive Night VIP Pack</div>
+              <div class="prize-desc">4 Hive Night tickets, Hornets swag bundle + 500 pts</div>
+            </div>
+            <div class="prize-pts">+500</div>
+          </div>
+          <div class="prize-card p3">
+            <div class="prize-medal">🥉</div>
+            <div class="prize-info">
+              <div class="prize-place">3rd Place</div>
+              <div class="prize-name">Swarm Merch Bundle</div>
+              <div class="prize-desc">Hornets hat, tee, and autographed basketball + 250 pts</div>
+            </div>
+            <div class="prize-pts">+250</div>
+          </div>
+        </div>
+
+        <!-- How it works -->
+        <div class="comp-section-title">📋 How It Works</div>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <div class="step-title">Pick a Category</div>
+              <div class="step-desc">Choose what area of the app you want to improve — new features, rewards, events, or the fan experience.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <div class="step-title">Submit Your Idea</div>
+              <div class="step-desc">Write a name and short description of your idea. Keep it clear and creative — you're pitching to the Hornets front office.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <div class="step-title">Get Community Votes</div>
+              <div class="step-desc">Other Swarm members vote on submissions. Top voted ideas go to the Hornets team for final judging.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-text">
+              <div class="step-title">Win Big</div>
+              <div class="step-desc">The Hornets pick the best 3 ideas. Winners are announced at a Hive Night and earn the prizes above.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit form -->
+      </div>
+
+      <div class="submit-card">
+        <div class="submit-card-header">
+          <div class="submit-card-title">✏️ Submit Your Idea</div>
+          <div class="submit-card-sub">All entries earn +50 Swarm Points just for participating</div>
+        </div>
+        <div class="submit-form">
+          <div>
+            <div class="sf-label">Idea Name</div>
+            <input class="sf-input" id="comp-idea-name" type="text" placeholder="e.g. Hornets Trivia Battle Mode" maxlength="60" />
+          </div>
+          <div>
+            <div class="sf-label">Category</div>
+            <div class="comp-category-grid" id="comp-cats">
+              <button class="comp-cat-btn" onclick="selectCat(this)">⚡ New Feature</button>
+              <button class="comp-cat-btn" onclick="selectCat(this)">🎁 Rewards</button>
+              <button class="comp-cat-btn" onclick="selectCat(this)">🐝 Fan Events</button>
+              <button class="comp-cat-btn" onclick="selectCat(this)">🎨 App Design</button>
+            </div>
+          </div>
+          <div>
+            <div class="sf-label">Describe Your Idea</div>
+            <textarea class="sf-input" id="comp-idea-desc" placeholder="What would it do? Why would teens love it? How does it grow Hornets fandom?"></textarea>
+          </div>
+          <button class="btn-submit-comp" onclick="submitCompEntry()">Submit Idea 🚀</button>
+          <div class="comp-pts-note">⚡ +50 pts awarded instantly for every submission</div>
+        </div>
+      </div>
+
+      <!-- Community entries -->
+      <div class="comp-section" style="padding-bottom: 0;">
+        <div class="comp-section-title">🔥 Top Community Ideas</div>
+        <div id="comp-entries-list">
+          <div class="entry-card" onclick="voteEntry(this)">
+            <div class="entry-top">
+              <div class="entry-idea-name">Hornets Trivia Battle</div>
+              <div class="entry-cat">⚡ New Feature</div>
+            </div>
+            <div class="entry-desc">Live head-to-head trivia during games — students from different schools compete on the leaderboard for bonus points.</div>
+            <div class="entry-footer">
+              <div class="entry-author">by Alex R. · Myers Park HS</div>
+              <div class="entry-votes">❤️ <span class="vote-count">34</span></div>
+            </div>
+          </div>
+          <div class="entry-card" onclick="voteEntry(this)">
+            <div class="entry-top">
+              <div class="entry-idea-name">Squad Challenges</div>
+              <div class="entry-cat">🐝 Fan Events</div>
+            </div>
+            <div class="entry-desc">Create squads with your school friends and compete against other schools for a trophy and season passes.</div>
+            <div class="entry-footer">
+              <div class="entry-author">by Maya T. · South Mecklenburg HS</div>
+              <div class="entry-votes">❤️ <span class="vote-count">28</span></div>
+            </div>
+          </div>
+          <div class="entry-card" onclick="voteEntry(this)">
+            <div class="entry-top">
+              <div class="entry-idea-name">Streak Freeze Power-Up</div>
+              <div class="entry-cat">🎁 Rewards</div>
+            </div>
+            <div class="entry-desc">Spend points to buy a streak freeze so you don't lose your streak if you miss a day. Like Duolingo but for Hornets fans.</div>
+            <div class="entry-footer">
+              <div class="entry-author">by Jordan K. · Ardrey Kell HS</div>
+              <div class="entry-votes">❤️ <span class="vote-count">21</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="height:16px;"></div>
+      </div>
+
+    </div>
+    <div class="bottom-nav" id="nav-competition"><!-- injected --></div>
+  </div>
+
   <!-- Overlay closes dropdown on outside tap -->
   <div class="dropdown-overlay" id="dropdown-overlay" onclick="closeProfileDropdown()"></div>
 
@@ -2696,6 +3128,9 @@
     </div>
     <div class="pd-item" onclick="closeProfileDropdown(); goToScreen('wheel-screen')">
       <span class="pd-item-icon">🎡</span> Daily Spin
+    </div>
+    <div class="pd-item" onclick="closeProfileDropdown(); goToScreen('competition')">
+      <span class="pd-item-icon">🏆</span> Design Challenge
     </div>
     <div class="pd-item" onclick="closeProfileDropdown(); goToScreen('leaderboard')">
       <span class="pd-item-icon">📊</span> Leaderboard
@@ -2860,9 +3295,9 @@
     { id: 'earn',         icon: '⚡', label: 'Earn' },
     { id: 'wheel-screen', icon: '🎡', label: 'Spin' },
     { id: 'badges',       icon: '🏅', label: 'Badges' },
-    { id: 'rewards',      icon: '🎁', label: 'Rewards' },
+    { id: 'competition',  icon: '🏆', label: 'Challenge' },
   ];
-  const appScreens = ['home','earn','rewards','hivenights','leaderboard','tiers','wheel-screen','badges','scores'];
+  const appScreens = ['home','earn','rewards','hivenights','leaderboard','tiers','wheel-screen','badges','scores','competition'];
   appScreens.forEach(screenId => {
     const nav = document.getElementById('nav-' + screenId);
     if (!nav) return;
@@ -3219,6 +3654,82 @@
 
   // Draw wheel whenever screen is navigated to
   const _origGoTo = goToScreen;
+
+  // ── Competition ────────────────────────────────────────────
+  let selectedCat = '';
+
+  function selectCat(btn) {
+    document.querySelectorAll('.comp-cat-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedCat = btn.textContent.trim();
+  }
+
+  function submitCompEntry() {
+    const name = document.getElementById('comp-idea-name').value.trim();
+    const desc = document.getElementById('comp-idea-desc').value.trim();
+    if (!name) { showToast('Give your idea a name first! ✏️'); return; }
+    if (!desc)  { showToast('Describe your idea! 💡'); return; }
+    const cat  = selectedCat || '⚡ New Feature';
+    const user = currentUser ? currentUser.firstName + ' ' + (currentUser.lastName ? currentUser.lastName[0]+'.' : '') : 'You';
+    const school = currentUser && currentUser.school ? currentUser.school.replace(' High School','').replace(' School','') + ' HS' : 'Your School';
+
+    const list = document.getElementById('comp-entries-list');
+    const card = document.createElement('div');
+    card.className = 'entry-card';
+    card.onclick = function(){ voteEntry(this); };
+    card.innerHTML = `
+      <div class="entry-top">
+        <div class="entry-idea-name">${name}</div>
+        <div class="entry-cat">${cat}</div>
+      </div>
+      <div class="entry-desc">${desc}</div>
+      <div class="entry-footer">
+        <div class="entry-author">by ${user} · ${school}</div>
+        <div class="entry-votes">❤️ <span class="vote-count">1</span></div>
+      </div>`;
+    list.insertBefore(card, list.firstChild);
+
+    // Update entry count
+    const countEl = document.getElementById('cdl-entries');
+    if (countEl) countEl.textContent = parseInt(countEl.textContent) + 1;
+
+    // Clear form
+    document.getElementById('comp-idea-name').value = '';
+    document.getElementById('comp-idea-desc').value = '';
+    document.querySelectorAll('.comp-cat-btn').forEach(b => b.classList.remove('selected'));
+    selectedCat = '';
+
+    showToast('Idea submitted! +50 pts earned 🚀');
+  }
+
+  function voteEntry(card) {
+    const vcEl = card.querySelector('.vote-count');
+    if (!vcEl) return;
+    if (card.dataset.voted) { showToast('Already voted for this one! ❤️'); return; }
+    card.dataset.voted = '1';
+    vcEl.textContent = parseInt(vcEl.textContent) + 1;
+    card.style.borderColor = 'rgba(224,64,251,0.5)';
+    showToast('Vote cast! ❤️ +5 pts');
+  }
+
+  // Competition countdown — deadline July 1 2026
+  function updateCompCountdown() {
+    const deadline = new Date('2026-07-01T23:59:00');
+    const now = new Date();
+    const diff = deadline - now;
+    if (diff <= 0) return;
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000) / 60000);
+    const dEl = document.getElementById('cdl-days');
+    const hEl = document.getElementById('cdl-hours');
+    const mEl = document.getElementById('cdl-mins');
+    if (dEl) dEl.textContent = days;
+    if (hEl) hEl.textContent = String(hours).padStart(2,'0');
+    if (mEl) mEl.textContent = String(mins).padStart(2,'0');
+  }
+  updateCompCountdown();
+  setInterval(updateCompCountdown, 60000);
 
   // ── Daily quest completion ─────────────────────────────────
   function completeQuest(el, pts) {
