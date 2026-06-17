@@ -2248,7 +2248,7 @@
           <div class="ec-icon purple">📱</div>
           <div class="ec-info">
             <div class="ec-title">Share Fan Content</div>
-            <div class="ec-desc">Post on Instagram or TikTok with #HiveID for review</div>
+            <div class="ec-desc">Post on Instagram or TikTok with #TheSwarm for review</div>
           </div>
           <div class="ec-right">
             <div class="ec-pts">20</div>
@@ -2326,22 +2326,32 @@
       <!-- Merch Tab -->
       <div id="tab-merch">
         <div class="rewards-grid">
+          <div class="reward-card" onclick="showToast('Discount code sent to your email! 🎟️')">
+            <div class="reward-img merch">🎟️</div>
+            <div class="reward-body">
+              <div class="reward-name">$10 Ticket Discount</div>
+              <div class="reward-cost">
+                <div class="r-pts">100 pts</div>
+                <div class="r-status can">Redeem</div>
+              </div>
+            </div>
+          </div>
+          <div class="reward-card" onclick="showToast('The Swarm Tee redeemed! 👕')">
+            <div class="reward-img merch">👕</div>
+            <div class="reward-body">
+              <div class="reward-name">The Swarm Tee Shirt</div>
+              <div class="reward-cost">
+                <div class="r-pts">150 pts</div>
+                <div class="r-status can">Redeem</div>
+              </div>
+            </div>
+          </div>
           <div class="reward-card" onclick="showToast('Hornets Cap redeemed! Check your email 🧢')">
             <div class="reward-img merch">🧢</div>
             <div class="reward-body">
               <div class="reward-name">Hornets Snapback Cap</div>
               <div class="reward-cost">
                 <div class="r-pts">200 pts</div>
-                <div class="r-status can">Redeem</div>
-              </div>
-            </div>
-          </div>
-          <div class="reward-card" onclick="showToast('Hive ID Tee redeemed! 👕')">
-            <div class="reward-img merch">👕</div>
-            <div class="reward-body">
-              <div class="reward-name">Hive ID Tee Shirt</div>
-              <div class="reward-cost">
-                <div class="r-pts">150 pts</div>
                 <div class="r-status can">Redeem</div>
               </div>
             </div>
@@ -2366,23 +2376,13 @@
               </div>
             </div>
           </div>
-          <div class="reward-card" onclick="showToast('Need Queen\'s Circle for a jersey! 👑')">
+          <div class="reward-card" onclick="showToast('Need Queen\'s Circle tier for a jersey! 👑')">
             <div class="reward-img merch">🎽</div>
             <div class="reward-body">
               <div class="reward-name">Hornets Jersey</div>
               <div class="reward-cost">
                 <div class="r-pts">1,500 pts</div>
                 <div class="r-status need">Queen's ⭐</div>
-              </div>
-            </div>
-          </div>
-          <div class="reward-card" onclick="showToast('Discount code sent! 🎟️')">
-            <div class="reward-img merch">🎟️</div>
-            <div class="reward-body">
-              <div class="reward-name">$10 Ticket Discount</div>
-              <div class="reward-cost">
-                <div class="r-pts">100 pts</div>
-                <div class="r-status can">Redeem</div>
               </div>
             </div>
           </div>
@@ -2836,85 +2836,85 @@
       <div class="badges-section">
         <div class="badges-section-title">🔥 Streak Badges</div>
         <div class="badges-grid">
-          <div class="badge-card earned" onclick="showToast('7 Day Streak — earned Jan 10! 🔥')">
+          <div class="badge-card earned" onclick="showToast('Week Warrior — earned Jan 10! 🔥')">
             <span class="badge-emoji">🔥</span>
             <div class="badge-name">Week Warrior</div>
             <div class="badge-desc">7-day login streak</div>
-            <div class="badge-pts">+50 pts</div>
+            <div class="badge-pts">+25 pts bonus</div>
           </div>
           <div class="badge-card locked" onclick="showToast('Log in 30 days in a row to unlock! 🔥')">
             <span class="badge-emoji">🔥</span>
             <div class="badge-name">Monthly Bee</div>
             <div class="badge-desc">30-day streak</div>
-            <div class="badge-pts">+150 pts</div>
+            <div class="badge-pts">+75 pts bonus</div>
           </div>
-          <div class="badge-card locked" onclick="showToast('100 days straight — you got this! 💯')">
+          <div class="badge-card locked" onclick="showToast('100 days straight — legend status! 💯')">
             <span class="badge-emoji">💯</span>
             <div class="badge-name">Century Fan</div>
             <div class="badge-desc">100-day streak</div>
-            <div class="badge-pts">+500 pts</div>
+            <div class="badge-pts">+200 pts bonus</div>
           </div>
         </div>
 
         <div class="badges-section-title">🏀 Game Badges</div>
         <div class="badges-grid">
-          <div class="badge-card earned" onclick="showToast('First Game attended — you were there! 🏟️')">
+          <div class="badge-card earned" onclick="showToast('First Sting — you were there! 🏟️')">
             <span class="badge-emoji">🎟️</span>
             <div class="badge-name">First Sting</div>
-            <div class="badge-desc">Attend 1st game</div>
-            <div class="badge-pts">+100 pts</div>
+            <div class="badge-desc">Attend your 1st game</div>
+            <div class="badge-pts">+25 pts bonus</div>
           </div>
           <div class="badge-card locked" onclick="showToast('Attend 5 games total to unlock! 🏀')">
             <span class="badge-emoji">🏟️</span>
             <div class="badge-name">Court Regular</div>
             <div class="badge-desc">Attend 5 games</div>
-            <div class="badge-pts">+200 pts</div>
+            <div class="badge-pts">+75 pts bonus</div>
           </div>
           <div class="badge-card locked" onclick="showToast('Watch every Hornets game in a month! 📺')">
             <span class="badge-emoji">📺</span>
             <div class="badge-name">Full Month</div>
-            <div class="badge-desc">Watch every game in a month</div>
-            <div class="badge-pts">+300 pts</div>
+            <div class="badge-desc">Watch every game/month</div>
+            <div class="badge-pts">+100 pts bonus</div>
           </div>
-          <div class="badge-card earned" onclick="showToast('Hive Night veteran — you rep the Swarm! 🐝')">
+          <div class="badge-card earned" onclick="showToast('Hive Night OG — you rep the Swarm! 🐝')">
             <span class="badge-emoji">🐝</span>
             <div class="badge-name">Hive Night OG</div>
             <div class="badge-desc">Attend a Hive Night</div>
-            <div class="badge-pts">+125 pts</div>
+            <div class="badge-pts">+25 pts bonus</div>
           </div>
           <div class="badge-card locked" onclick="showToast('Attend 3 Hive Nights to unlock! 🐝')">
             <span class="badge-emoji">👑</span>
             <div class="badge-name">Hive Royalty</div>
             <div class="badge-desc">Attend 3 Hive Nights</div>
-            <div class="badge-pts">+400 pts</div>
+            <div class="badge-pts">+100 pts bonus</div>
           </div>
-          <div class="badge-card locked" onclick="showToast('Win at halftime to unlock! 🏆')">
+          <div class="badge-card locked" onclick="showToast('Win a halftime challenge to unlock! 🏆')">
             <span class="badge-emoji">🎯</span>
             <div class="badge-name">Court Star</div>
             <div class="badge-desc">Win halftime challenge</div>
-            <div class="badge-pts">+250 pts</div>
+            <div class="badge-pts">+50 pts bonus</div>
           </div>
         </div>
 
         <div class="badges-section-title">👥 Social Badges</div>
         <div class="badges-grid">
-          <div class="badge-card earned" onclick="showToast('First referral sent — spreading the Swarm! 🔗')">
+          <div class="badge-card earned" onclick="showToast('Recruiter badge — spreading the Swarm! 🔗')">
             <span class="badge-emoji">🔗</span>
             <div class="badge-name">Recruiter</div>
             <div class="badge-desc">Refer 1 friend</div>
-            <div class="badge-pts">+50 pts</div>
+            <div class="badge-pts">+15 pts bonus</div>
           </div>
           <div class="badge-card locked" onclick="showToast('Refer 5 friends to unlock! 👥')">
             <span class="badge-emoji">🐝</span>
             <div class="badge-name">Swarm Builder</div>
             <div class="badge-desc">Refer 5 friends</div>
-            <div class="badge-pts">+300 pts</div>
+            <div class="badge-pts">+75 pts bonus</div>
           </div>
-          <div class="badge-card locked" onclick="showToast('Post on social with #TheSwarm to unlock! 📱')">
+          <div class="badge-card locked" onclick="showToast('Post 3x with #TheSwarm to unlock! 📱')">
             <span class="badge-emoji">📱</span>
             <div class="badge-name">Content Bee</div>
-            <div class="badge-desc">Share 3 posts</div>
-            <div class="badge-pts">+100 pts</div>
+            <div class="badge-desc">Share 3 posts #TheSwarm</div>
+            <div class="badge-pts">+50 pts bonus</div>
           </div>
         </div>
 
@@ -2923,26 +2923,26 @@
           <div class="badge-card gold-badge locked" onclick="showToast('Reach Queen\'s Circle tier to unlock! 👑')">
             <span class="badge-emoji">👑</span>
             <div class="badge-name">Queen's Circle</div>
-            <div class="badge-desc">Reach top tier</div>
-            <div class="badge-pts">+1000 pts</div>
+            <div class="badge-desc">Reach top tier status</div>
+            <div class="badge-pts">Prestige only 🏅</div>
           </div>
           <div class="badge-card gold-badge locked" onclick="showToast('Hit #1 on the leaderboard to unlock! 🥇')">
             <span class="badge-emoji">🥇</span>
             <div class="badge-name">Top of the Hive</div>
-            <div class="badge-desc">Reach #1 rank</div>
-            <div class="badge-pts">+750 pts</div>
+            <div class="badge-desc">Reach #1 leaderboard</div>
+            <div class="badge-pts">Prestige only 🏅</div>
           </div>
           <div class="badge-card gold-badge locked" onclick="showToast('Meet a Hornets player to unlock! ⭐')">
             <span class="badge-emoji">⭐</span>
             <div class="badge-name">Met the Team</div>
             <div class="badge-desc">Player meet & greet</div>
-            <div class="badge-pts">+500 pts</div>
+            <div class="badge-pts">Prestige only 🏅</div>
           </div>
           <div class="badge-card gold-badge locked" onclick="showToast('Complete all daily quests for 7 days! ⚡')">
             <span class="badge-emoji">⚡</span>
             <div class="badge-name">Quest Master</div>
             <div class="badge-desc">7-day quest streak</div>
-            <div class="badge-pts">+400 pts</div>
+            <div class="badge-pts">+100 pts bonus</div>
           </div>
         </div>
       </div>
@@ -2977,27 +2977,27 @@
             <div class="prize-info">
               <div class="prize-place">1st Place</div>
               <div class="prize-name">Hornets Court Experience</div>
-              <div class="prize-desc">Pregame court access, meet a player, signed jersey + 1,000 pts</div>
+              <div class="prize-desc">Pregame court access, meet a player, signed jersey + 500 pts</div>
             </div>
-            <div class="prize-pts">+1000</div>
+            <div class="prize-pts">+500</div>
           </div>
           <div class="prize-card p2">
             <div class="prize-medal">🥈</div>
             <div class="prize-info">
               <div class="prize-place">2nd Place</div>
               <div class="prize-name">Hive Night VIP Pack</div>
-              <div class="prize-desc">4 Hive Night tickets, Hornets swag bundle + 500 pts</div>
+              <div class="prize-desc">4 Hive Night tickets, Hornets swag bundle + 250 pts</div>
             </div>
-            <div class="prize-pts">+500</div>
+            <div class="prize-pts">+250</div>
           </div>
           <div class="prize-card p3">
             <div class="prize-medal">🥉</div>
             <div class="prize-info">
               <div class="prize-place">3rd Place</div>
               <div class="prize-name">Swarm Merch Bundle</div>
-              <div class="prize-desc">Hornets hat, tee, and autographed basketball + 250 pts</div>
+              <div class="prize-desc">Hornets hat, tee, and autographed basketball + 100 pts</div>
             </div>
-            <div class="prize-pts">+250</div>
+            <div class="prize-pts">+100</div>
           </div>
         </div>
 
@@ -3061,7 +3061,7 @@
             <textarea class="sf-input" id="comp-idea-desc" placeholder="What would it do? Why would teens love it? How does it grow Hornets fandom?"></textarea>
           </div>
           <button class="btn-submit-comp" onclick="submitCompEntry()">Submit Idea 🚀</button>
-          <div class="comp-pts-note">⚡ +50 pts awarded instantly for every submission</div>
+          <div class="comp-pts-note">⚡ +50 pts awarded · 1 submission per person</div>
         </div>
       </div>
 
@@ -3669,6 +3669,14 @@
     const desc = document.getElementById('comp-idea-desc').value.trim();
     if (!name) { showToast('Give your idea a name first! ✏️'); return; }
     if (!desc)  { showToast('Describe your idea! 💡'); return; }
+
+    const userKey = currentUser ? currentUser.email : 'guest';
+    const subKey  = 'compSubmitted_' + userKey;
+    if (localStorage.getItem(subKey)) {
+      showToast('You already submitted an entry! Only 1 per person. 🐝'); return;
+    }
+    localStorage.setItem(subKey, '1');
+
     const cat  = selectedCat || '⚡ New Feature';
     const user = currentUser ? currentUser.firstName + ' ' + (currentUser.lastName ? currentUser.lastName[0]+'.' : '') : 'You';
     const school = currentUser && currentUser.school ? currentUser.school.replace(' High School','').replace(' School','') + ' HS' : 'Your School';
